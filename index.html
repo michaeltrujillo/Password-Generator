@@ -3,9 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Password Generator</title>
 </head>
 <body>
-    
+    <h1>Password Generator</h1>
+    <p>Instructions</p>
+    <button id="generate">Make it happen</button>
+
+    <script>
+        let button = document.getElementById("generate");
+        
+        button.addEventListener("click", function(){
+            // console.log(this);
+            let selectedNumber = prompt("Enter desired password length from 8 to 128. Do not spell number out.");
+            let bigLittle = confirm("Select OK if you want uppercase letters included.");
+            let includeNum = confirm("Select OK if you want to include numbers.");
+            let special = confirm("Select OK if you want to include these special characters(!,@,#,$,%,^,&).");
+
+            let  lower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+            let originalArray = [lower];
+
+            if(bigLittle === true){
+                let caps = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+                originalArray.push(caps);
+            };
+
+            if(includeNum === true){
+                let num = ["0","1","2","3","4","5","6","7","8","9"];
+                originalArray.push(num);
+            };
+
+            if(special === true){
+                let symbol = ["!","@","#","$","%","^","&"];
+                originalArray.push(symbol);
+            
+            };
+
+             if (selectedNumber > 7 &&  selectedNumber < 129){
+                
+                let password = "";
+
+                for (let i = 0; i < (selectedNumber + 1); i++) {
+                   
+                    
+                    let ranOriginalIndex= Math.floor(Math.random() * (originalArray.length - 1));
+                    let ranArray = originalArray[ranOriginalIndex];
+                    let ranInnerArrayIndex= Math.floor(Math.random() * (ranArray.length - 1) );
+                    let newString = ranArray[ranInnerArrayIndex];
+
+                    newString2 = newString;
+                                    
+                    
+                    // let randomChoiceSingle = password.push(newString);
+
+
+                    // password[i].push(newString2);
+
+
+                }
+
+                alert(password);
+
+                
+               
+            }
+            else{
+                alert("invalid number length. click again to start over. next time only use a number from 8-128. only type numbers and remember do not type any letters ");
+
+            };
+
+
+        })
+
+    </script>
 </body>
 </html>
